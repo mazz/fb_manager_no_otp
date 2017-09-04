@@ -26,6 +26,11 @@ defmodule FbManagerNoOtp do
         send(pid, {:ok, state})
 
         loop(state)
+
+      {_, pid} ->
+        send(pid, {:error})
+
+        loop(state)
     end
   end
 end
