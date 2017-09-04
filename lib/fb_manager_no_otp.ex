@@ -1,18 +1,34 @@
 defmodule FbManagerNoOtp do
+
   @moduledoc """
   Documentation for FbManagerNoOtp.
   """
+  def start_link() do
+    spawn_link(__MODULE__, :loop, [%{}])
+  end
 
-  @doc """
-  Hello world.
+  def loop(state) do
+    receive do
+      {:add, name} ->
+        client = FFNerd.Client.new("hrqevq4h55mt")
+        IO.inspect client
+        IO.inspect name
+        # FFNerd.Player.find("Russell Wilson", client)
+        player = FFNerd.Player.find(name, client)
+        IO.inspect player
+        # new_state = Map.put(state, name, player)
 
-  ## Examples
+        loop(state)
+      
+      {:remove, name} ->
+        new_state = Map.delete(state, name)
 
-      iex> FbManagerNoOtp.hello
-      :world
+        loop(state)
+      
+      {:team, pid} ->
+        send(pid, {:ok, state})
 
-  """
-  def hello do
-    :world
+        loop(state)
+    end
   end
 end
