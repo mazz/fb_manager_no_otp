@@ -1,5 +1,7 @@
 # FbManagerNoOtp
 
+Code based on "Intro to OTP In Elixir" (https://www.youtube.com/watch?v=CJT8wPnmjTM)
+
 A small application wrapper for https://www.fantasyfootballnerd.com/. Uses the the ffnerd-api-elixir elixir API(https://github.com/jessejanderson/ffnerd-api-elixir). This application does NOT use OTP.
 
 ## Getting Started
