@@ -1,6 +1,25 @@
 # FbManagerNoOtp
 
-**TODO: Add description**
+A small application wrapper for https://www.fantasyfootballnerd.com/. Uses the the ffnerd-api-elixir elixir API(https://github.com/jessejanderson/ffnerd-api-elixir). This application does NOT use OTP.
+
+## Getting Started
+
+Clone the repo locally
+`git clone https://github.com/mazz/fb_manager_no_otp.git`
+Get dependencies and compile dependencies
+`mix deps.get && mix deps.compile`
+Add compiled app to iex runtime
+`iex -S mix`
+IEX> Start a process
+`pid = FbManagerNoOtp.start_link`
+IEX> Add some players
+`send(pid, {:add, "Russell Wilson"})`
+`send(pid, {:add, "Doug Baldwin"})`
+IEX> Remove a player
+`send(pid, {:remove, "Doug Baldwin"})`
+IEX> View your fantasy team
+`send(pid, {:team, self})`
+`flush`
 
 ## Installation
 
