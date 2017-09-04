@@ -11,19 +11,17 @@ defmodule FbManagerNoOtp do
     receive do
       {:add, name} ->
         client = FFNerd.Client.new("hrqevq4h55mt")
-        IO.inspect client
-        IO.inspect name
-        # FFNerd.Player.find("Russell Wilson", client)
         player = FFNerd.Player.find(name, client)
-        IO.inspect player
-        # new_state = Map.put(state, name, player)
-
-        loop(state)
+        
+        new_state = Map.put(state, name, player)
+        IO.inspect new_state
+        
+        loop(new_state)
       
       {:remove, name} ->
         new_state = Map.delete(state, name)
 
-        loop(state)
+        loop(new_state)
       
       {:team, pid} ->
         send(pid, {:ok, state})

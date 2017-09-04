@@ -1,6 +1,6 @@
 %{"certifi": {:hex, :certifi, "1.0.0", "1c787a85b1855ba354f0b8920392c19aa1d06b0ee1362f9141279620a5be2039", [], [], "hexpm"},
   "exconstructor": {:hex, :exconstructor, "1.0.2", "46c60fa258d3893c2c7d0d45f80b9c830919c38eea2a19c61acaf17f0851b902", [], [], "hexpm"},
-  "ffnerd": {:hex, :ffnerd, "0.2.0", "0691e05930210d88d5caa470b5904e82c85b80bccb55aca3a1bf42e3536f0af2", [], [{:exconstructor, "~> 1.0.2", [hex: :exconstructor, repo: "hexpm", optional: false]}, {:httpoison, "~> 0.8.0", [hex: :httpoison, repo: "hexpm", optional: false]}, {:poison, "~> 2.0", [hex: :poison, repo: "hexpm", optional: false]}], "hexpm"},
+  "ffnerd": {:git, "https://github.com/jessejanderson/ffnerd-api-elixir.git", "7da3a4ecb7d590b10ef44580843dbe8136757bb6", []},
   "hackney": {:hex, :hackney, "1.6.6", "5564b4695d48fd87859e9df77a7fa4b4d284d24519f0cd7cc898f09e8fbdc8a3", [], [{:certifi, "1.0.0", [hex: :certifi, repo: "hexpm", optional: false]}, {:idna, "4.0.0", [hex: :idna, repo: "hexpm", optional: false]}, {:metrics, "1.0.1", [hex: :metrics, repo: "hexpm", optional: false]}, {:mimerl, "1.0.2", [hex: :mimerl, repo: "hexpm", optional: false]}, {:ssl_verify_fun, "1.1.1", [hex: :ssl_verify_fun, repo: "hexpm", optional: false]}], "hexpm"},
   "httpoison": {:hex, :httpoison, "0.8.3", "b675a3fdc839a0b8d7a285c6b3747d6d596ae70b6ccb762233a990d7289ccae4", [], [{:hackney, "~> 1.6.0", [hex: :hackney, repo: "hexpm", optional: false]}], "hexpm"},
   "idna": {:hex, :idna, "4.0.0", "10aaa9f79d0b12cf0def53038547855b91144f1bfcc0ec73494f38bb7b9c4961", [], [], "hexpm"},
