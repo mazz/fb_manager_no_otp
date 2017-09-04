@@ -1,0 +1,15 @@
+iex -S mix
+
+spawn(fn -> IO.puts "Hello World" end)
+
+pid = spawn(fn -> IO.puts "Hello World" end)
+Process.alive?(pid)
+
+pid = FbManagerNoOtp.start_link
+send(pid, {:add, "Russell Wilson"})
+send(pid, {:add, "Doug Baldwin"})
+send(pid, {:team, self})
+flush
+send(pid, {:remove, "Doug Baldwin"})
+send(pid, {:team, self})
+flush
