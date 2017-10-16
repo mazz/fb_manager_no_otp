@@ -62,34 +62,5 @@ defmodule FbManagerNoOtp do
         new_state = Map.delete(state, player)
         loop(new_state)
     end
-
   end
-
-
-  # def loop(state) do
-  #   receive do
-  #     {:add, name} ->
-  #       client = FFNerd.Client.new("hrqevq4h55mt")
-  #       player = FFNerd.Player.find(name, client)
-  #       # IO.inspect player
-  #       new_state = Map.put(state, name, player)
-        
-  #       loop(new_state)
-      
-  #     {:remove, name} ->
-  #       new_state = Map.delete(state, name)
-
-  #       loop(new_state)
-      
-  #     {:team, pid} ->
-  #       send(pid, {:ok, state})
-
-  #       loop(state)
-
-  #     {_, pid} ->
-  #       send(pid, {:error})
-
-  #       loop(state)
-  #   end
-  # end
 end
