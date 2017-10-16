@@ -36,6 +36,9 @@ defmodule FbManagerNoOtp do
     end
   end
 
+  def remove_player(pid, remove_player) do
+    send(pid, {remove_player, :remove})
+  end
 
   def loop(state) do
     receive do
@@ -46,7 +49,7 @@ defmodule FbManagerNoOtp do
       {from, ref, name, :add_player} ->
         client = FFNerd.Client.new("hrqevq4h55mt")
         player = FFNerd.Player.find(name, client)
-        new_state = Map.put(state, name, player)
+        new_state = Map.put(state, name, player)        
         send(from, {ref, player})
         loop(new_state)
 
@@ -54,6 +57,10 @@ defmodule FbManagerNoOtp do
         found = Map.fetch(state, player)
         send(from, {ref, found})
         loop(state)
+
+      {player, :remove} ->
+        new_state = Map.delete(state, player)
+        loop(new_state)
     end
 
   end

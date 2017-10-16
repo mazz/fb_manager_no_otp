@@ -28,9 +28,13 @@ defmodule FbManagerNoOtpTest do
     assert FbManagerNoOtp.find(pid, "Russell Wilson") != nil
   end
 
+  test "can remove a player" do
+    {:ok, pid} = FbManagerNoOtp.start
 
-  # test "can remove a player" do
-  #   {:ok, pid} = FbManagerNoOtp.start
-  #   FbManagerNoOtp.remove_player(pid, "Russell Wilson")
-  # end
+    FbManagerNoOtp.add_player(pid, "Russell Wilson")
+    FbManagerNoOtp.remove_player(pid, "Russell Wilson")
+
+    assert FbManagerNoOtp.find(pid, "Russell Wilson") == :error
+  end
+
 end
