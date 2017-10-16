@@ -21,7 +21,7 @@ iex -S mix
 ```
 IEX> Start a process
 ```elixir
-pid = FbManagerNoOtp.start
+{:ok, pid} = FbManagerNoOtp.start
 ```
 IEX> Add some players
 ```elixir
