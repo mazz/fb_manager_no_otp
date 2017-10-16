@@ -17,15 +17,25 @@ defmodule FbManagerNoOtp do
     end
   end
 
-  def add_player(pid, player_name) do
+  def add_player(pid, add_name) do
     ref = make_ref()
-    send(pid, {self(), ref, player_name, :add_player})
+    send(pid, {self(), ref, add_name, :add_player})
 
     # return back the player we just added
     receive do
       {^ref, player} -> player
     end
   end
+
+  def find(pid, find_player) do
+    ref = make_ref()
+    send(pid, {self(), ref, find_player, :find})
+
+    receive do
+      {^ref, player} -> player
+    end
+  end
+
 
   def loop(state) do
     receive do
@@ -39,6 +49,11 @@ defmodule FbManagerNoOtp do
         new_state = Map.put(state, name, player)
         send(from, {ref, player})
         loop(new_state)
+
+      {from, ref, player, :find} ->
+        found = Map.fetch(state, player)
+        send(from, {ref, found})
+        loop(state)
     end
 
   end
