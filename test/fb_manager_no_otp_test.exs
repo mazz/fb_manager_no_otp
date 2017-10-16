@@ -2,7 +2,8 @@ defmodule FbManagerNoOtpTest do
   use ExUnit.Case
   doctest FbManagerNoOtp
 
-  test "greets the world" do
-    assert FbManagerNoOtp.hello() == :world
+  test "starts with an empty roster" do
+    {:ok, pid} = FbManagerNoOtp.start
+    assert FbManagerNoOtp.roster(pid) == %{}
   end
 end
