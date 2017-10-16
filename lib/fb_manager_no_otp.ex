@@ -8,10 +8,6 @@ defmodule FbManagerNoOtp do
     {:ok, spawn_link(__MODULE__, :loop, [%{}])}
   end
 
-  def start_link() do
-    spawn_link(__MODULE__, :loop, [%{}])
-  end
-
   def roster(pid) do
     ref = make_ref()
     send(pid, {self(), ref, :roster})
@@ -21,11 +17,28 @@ defmodule FbManagerNoOtp do
     end
   end
 
+  def add_player(pid, player_name) do
+    ref = make_ref()
+    send(pid, {self(), ref, player_name, :add_player})
+
+    # return back the player we just added
+    receive do
+      {^ref, player} -> player
+    end
+  end
+
   def loop(state) do
     receive do
       {from, ref, :roster} ->
         send(from, {ref, state})
         loop(state)
+
+      {from, ref, name, :add_player} ->
+        client = FFNerd.Client.new("hrqevq4h55mt")
+        player = FFNerd.Player.find(name, client)
+        new_state = Map.put(state, name, player)
+        send(from, {ref, player})
+        loop(new_state)
     end
 
   end
